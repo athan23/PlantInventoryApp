@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/search"
+        android:title="@string/search_plant"
+        android:icon="@drawable/ic_magnify"
+        app:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.SearchView" />
+
+    <item
+        android:title="@string/filter_menuitem"
+        android:icon="@drawable/ic_filter"
+        android:id="@+id/menu_filter"
+        app:showAsAction="ifRoom" >
+
+        <menu>
+            <item
+                android:title="@string/one_half"
+                android:id="@+id/submenu_one_half">
+            </item>
+
+            <item
+                android:title="@string/five_fifteen"
+                android:id="@+id/submenu_five_fifteen">
+            </item>
+
+            <item
+                android:title="@string/four_tall"
+                android:id="@+id/submenu_four_tall">
+            </item>
+        </menu>
+    </item>
+</menu>

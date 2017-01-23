@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_plant_information"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="none"
+    tools:context="edu.calpoly.jgunawan.plantinventory.PlantInformationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Botanical and Common Names -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/plant_header">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/commonName"
+                android:text="@string/botanical_name"
+                android:gravity="center"
+                android:textSize="48sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/botanicalName"
+                android:text="@string/common_name"
+                android:gravity="center"
+                android:textSize="36sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+        </LinearLayout>
+
+        <!-- Size -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:id="@+id/sizeCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="Size" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/sizeContent"
+                style="@style/PlantInformationFont"
+                android:text="1 gal" />
+
+        </LinearLayout>
+
+        <!-- Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:id="@+id/detailsCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="Details"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/detailsContent"
+                style="@style/PlantInformationFont"
+                android:text="fun blend of upright and corkscrew foliage" />
+
+        </LinearLayout>
+
+        <!-- Notes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:id="@+id/notesCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="Notes"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/notesContent"
+                style="@style/PlantInformationFont"
+                android:text="None"/>
+
+        </LinearLayout>
+
+        <!-- Type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:id="@+id/typeCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="Type"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/typeContent"
+                style="@style/PlantInformationFont"
+                android:text="Perennial"/>
+
+        </LinearLayout>
+
+        <!-- USDA Zone -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:id="@+id/zoneCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="Min. USDA Zone"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/zoneContent"
+                style="@style/PlantInformationFont"
+                android:text="8"/>
+
+        </LinearLayout>
+
+        <!-- Availability -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:id="@+id/availableCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="# Available"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/availableContent"
+                style="@style/PlantInformationFont"
+                android:text="25"/>
+
+            <!--
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                style="@style/PlantInformationFont"
+                android:id="@+id/availabilitySpinner"/>
+            -->
+        </LinearLayout>
+
+        <!-- Saleable -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:id="@+id/saleableCategory"
+                style="@style/PlantInformationFont"
+                android:textStyle="bold"
+                android:text="@string/saleable"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:id="@+id/saleableContent"
+                style="@style/PlantInformationFont"
+                android:text="Yes"/>
+
+        </LinearLayout>
+
+        <!-- Edit Notes -->
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/PlantInformationFont"
+                android:id="@+id/NoteTextView"
+                android:text="@string/notes"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/NoteEditText"
+                android:gravity="start"
+                android:inputType="textMultiLine|textCapSentences"
+                android:lines="3"
+                android:background="@drawable/edit_text_style"
+                style="@style/Widget.AppCompat.EditText"/>
+        </LinearLayout>
+        -->
+
+        <!-- Save Button -->
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/saveButton"
+                android:textSize="24sp"
+                android:text="@string/save"
+                android:onClick="save"/>
+        </LinearLayout>
+        -->
+
+    </LinearLayout>
+
+</ScrollView>

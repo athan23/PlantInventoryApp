@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Growing Grounds Plant Inventory</string>
+
+    <string name="scan">Scan</string>
+    <string name="add_plant">Add Plant</string>
+    <string name="search_plant">Search Plant</string>
+    <string name="send_form">Send Form</string>
+
+    <string name="one_half">1/2</string>
+    <string name="five_fifteen">5/15</string>
+    <string name="four_tall">4\" Tall</string>
+
+    <string name="botanical_name">Botanical Name</string>
+    <string name="common_name">Common Name</string>
+    <string name="size">Size</string>
+    <string name="details">Details</string>
+    <string name="notes">Notes</string>
+    <string name="type">Type</string>
+    <string name="min_usda_zone">Min. USDA Zone</string>
+    <string name="availability">Availability</string>
+    <string name="saleable">Saleable</string>
+    <string name="save">Save</string>
+
+    <string name="filter_menuitem">Filter</string>
+    <string name="edit_menuitem">Edit</string>
+
+    <string-array name="available_array">
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="saleable_array">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
+
+    <string name="search_plant_header">List of Plants</string>
+</resources>
