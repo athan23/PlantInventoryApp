@@ -14,13 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import rx.subjects.PublishSubject;
 
 public class SearchPlantActivity extends AppCompatActivity {
 
-    ArrayList<Plant> mPlants;
+    LinkedList<Plant> mPlants;
 
     private static final String SAVED_LAYOUT_MANAGER = "layout-manager-state";
 
@@ -36,13 +39,18 @@ public class SearchPlantActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         if (savedInstanceState == null) {
-            mPlants = Plant.getAllPlants();
+            try {
+                mPlants = Plant.getAllPlants();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else {
-            mPlants = savedInstanceState.getParcelableArrayList("ANIMALS");
+            //mPlants = savedInstanceState.getParcelableArrayList("");
         }
 
-        final PlantAdapter pa = new PlantAdapter(mPlants);
+        ArrayList<Plant> plants = new ArrayList<>(mPlants);
+        final PlantAdapter pa = new PlantAdapter(plants);
         recyclerView.setAdapter(pa);
     }
 
@@ -117,7 +125,7 @@ public class SearchPlantActivity extends AppCompatActivity {
         }
 
         public void bind(Plant plant) {
-            mTv.setText(plant.getCommonName());
+            mTv.setText(plant.getCommonNameString());
         }
     }
 

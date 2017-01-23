@@ -3,14 +3,27 @@ package edu.calpoly.jgunawan.plantinventory;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Plant implements Parcelable {
 
-    private String botanicalName;
-    private String commonName;
+    private Cell botanicalName;
+    private String botanicalNameString;
+    private Cell commonName;
+    private String commonNameString;
+    private Cell growth;
+    private String growthString;
     private int size;
-    private String details;
+    private Cell details;
+    private String detailsString;
     private String type;
     private int USDAZone;
     private int numAvailable;
@@ -28,14 +41,14 @@ public class Plant implements Parcelable {
     }
 
     public Plant(String commonName) {
-        this.commonName = commonName;
+        this.commonNameString = commonNameString;
     }
 
-    public String getBotanicalName() {
+    public Cell getBotanicalName() {
         return botanicalName;
     }
 
-    public String getCommonName() {
+    public Cell getCommonName() {
         return commonName;
     }
 
@@ -43,7 +56,7 @@ public class Plant implements Parcelable {
         return size;
     }
 
-    public String getDetails() {
+    public Cell getDetails() {
         return details;
     }
 
@@ -63,15 +76,15 @@ public class Plant implements Parcelable {
         return saleable;
     }
 
-    public void setBotanicalName(String botanicalName) {
+    public void setBotanicalName(Cell botanicalName) {
         this.botanicalName = botanicalName;
     }
 
-    public void setCommonName(String commonName) {
+    public void setCommonName(Cell commonName) {
         this.commonName = commonName;
     }
 
-    public void setDetails(String details) {
+    public void setDetails(Cell details) {
         this.details = details;
     }
 
@@ -102,10 +115,10 @@ public class Plant implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(botanicalName);
-        parcel.writeString(commonName);
+        parcel.writeString(botanicalName.getStringCellValue());
+        parcel.writeString(commonName.getStringCellValue());
         parcel.writeInt(size);
-        parcel.writeString(details);
+        parcel.writeString(details.getStringCellValue());
         parcel.writeString(type);
         parcel.writeInt(USDAZone);
         parcel.writeInt(numAvailable);
@@ -121,6 +134,7 @@ public class Plant implements Parcelable {
         public Plant createFromParcel(Parcel parcel) {
             Plant p = new Plant();
 
+            /*
             boolean[] arr = new boolean[1];
             parcel.readBooleanArray(arr);
             p.setSaleable(arr[0]);
@@ -128,10 +142,11 @@ public class Plant implements Parcelable {
             p.setNumAvailable(parcel.readInt());
             p.setUSDAZone(parcel.readInt());
             p.setType(parcel.readString());
-            p.setDetails(parcel.readString());
+            p.setDetailsString(parcel.readString());
             p.setSize(parcel.readInt());
-            p.setCommonName(parcel.readString());
-            p.setBotanicalName(parcel.readString());
+            */
+            p.setCommonNameString(parcel.readString());
+            //p.setBotanicalNameString(parcel.readString());
 
             return p;
         }
@@ -142,11 +157,31 @@ public class Plant implements Parcelable {
         }
     };
 
-    public static ArrayList<Plant> getAllPlants() {
-        ArrayList<Plant> plants = new ArrayList<>(ANIMALS.length);
-        for (String ANIMAL : ANIMALS) {
-            plants.add(new Plant(ANIMAL));
+    public static LinkedList<Plant> getAllPlants()
+        throws IOException, FileNotFoundException{
+//        ArrayList<Plant> plants = new ArrayList<>(ANIMALS.length);
+//        for (String ANIMAL : ANIMALS) {
+//            plants.add(new Plant(ANIMAL));
+//        }
+
+        LinkedList<Plant> plants = new LinkedList<Plant>();
+        FileInputStream in = new FileInputStream("ggf12 barcode.xlsx");
+        Plant p = new Plant();
+
+        XSSFWorkbook workbook = new XSSFWorkbook(in);
+        Sheet spreadsheet = workbook.getSheetAt(0);
+        Iterator<Row> rowIterator = spreadsheet.iterator();
+        Row row;
+
+        while(rowIterator.hasNext()) {
+            row = rowIterator.next();
+            Cell cell = row.getCell(0);
+            if(cell.getStringCellValue().length() > 0) {
+                p.setCommonNameString(cell.getStringCellValue());
+                plants.add(p);
+            }
         }
+
         return plants;
     }
 
@@ -201,4 +236,44 @@ public class Plant implements Parcelable {
             "gnu",
             "cow",
             "marten"};
+
+    public String getBotanicalNameString() {
+        return botanicalNameString;
+    }
+
+    public void setBotanicalNameString(String botanicalNameString) {
+        this.botanicalNameString = botanicalNameString;
+    }
+
+    public String getCommonNameString() {
+        return commonNameString;
+    }
+
+    public void setCommonNameString(String commonNameString) {
+        this.commonNameString = commonNameString;
+    }
+
+    public Cell getGrowth() {
+        return growth;
+    }
+
+    public void setGrowth(Cell growth) {
+        this.growth = growth;
+    }
+
+    public String getGrowthString() {
+        return growthString;
+    }
+
+    public void setGrowthString(String growthString) {
+        this.growthString = growthString;
+    }
+
+    public String getDetailsString() {
+        return detailsString;
+    }
+
+    public void setDetailsString(String detailsString) {
+        this.detailsString = detailsString;
+    }
 }

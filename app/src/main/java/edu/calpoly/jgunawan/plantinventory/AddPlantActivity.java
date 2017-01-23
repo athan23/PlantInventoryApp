@@ -24,15 +24,11 @@ import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import fr.ganfra.materialspinner.MaterialSpinner;
-
 public class AddPlantActivity extends AppCompatActivity {
 
     protected MaterialBetterSpinner availabilitySpinner;
-    protected MaterialBetterSpinner saleableSpinner;
 
     protected ArrayAdapter<String> availabilityAdapter;
-    protected ArrayAdapter<CharSequence> saleableAdapter;
 
     protected ArrayList<String> availabilityArrayList;
 
@@ -61,13 +57,10 @@ public class AddPlantActivity extends AppCompatActivity {
     private void initSpinners() {
         availabilitySpinner = (MaterialBetterSpinner) findViewById(R.id.availabilityAddPlantSpinner);
         //saleableSpinner = (MaterialBetterSpinner) findViewById(R.id.saleableAddPlantSpinner);
-        saleableSpinner = (MaterialBetterSpinner) findViewById(R.id.saleableAddPlantSpinner);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         availabilityAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, availabilityArrayList);
-        saleableAdapter = ArrayAdapter.createFromResource(this,
-                R.array.saleable_array, android.R.layout.simple_dropdown_item_1line);
 
         // Specify the layout to use when the list of choices appears
         availabilitySpinner.setAdapter(availabilityAdapter);
@@ -116,28 +109,6 @@ public class AddPlantActivity extends AppCompatActivity {
                                 }
                             }).show();
                 }
-            }
-        });
-
-        saleableSpinner.setAdapter(saleableAdapter);
-        availabilitySpinner.setFloatingLabel(MaterialAutoCompleteTextView.FLOATING_LABEL_NORMAL);
-        availabilitySpinner.setFloatingLabelTextSize((int) getResources().getDimension(R.dimen.text_size));
-        saleableSpinner.setFloatingLabelText(getResources().getString(R.string.saleable));
-
-        saleableSpinner.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         });
     }
