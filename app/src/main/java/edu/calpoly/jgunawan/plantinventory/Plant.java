@@ -2,13 +2,16 @@ package edu.calpoly.jgunawan.plantinventory;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -40,8 +43,8 @@ public class Plant implements Parcelable {
 
     }
 
-    public Plant(String commonName) {
-        this.commonNameString = commonNameString;
+    public Plant(String botanicalNameString) {
+        this.botanicalNameString = botanicalNameString;
     }
 
     public Cell getBotanicalName() {
@@ -115,8 +118,10 @@ public class Plant implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+
+        //parcel.writeString(botanicalName.getStringCellValue());
         parcel.writeString(botanicalName.getStringCellValue());
-        parcel.writeString(commonName.getStringCellValue());
+        /*
         parcel.writeInt(size);
         parcel.writeString(details.getStringCellValue());
         parcel.writeString(type);
@@ -126,6 +131,7 @@ public class Plant implements Parcelable {
         boolean[] arr = new boolean[1];
         arr[0] = saleable;
         parcel.writeBooleanArray(arr);
+        */
     }
 
     public static final Parcelable.Creator<Plant> CREATOR
@@ -145,7 +151,7 @@ public class Plant implements Parcelable {
             p.setDetailsString(parcel.readString());
             p.setSize(parcel.readInt());
             */
-            p.setCommonNameString(parcel.readString());
+            p.setBotanicalNameString(parcel.readString());
             //p.setBotanicalNameString(parcel.readString());
 
             return p;
@@ -156,86 +162,6 @@ public class Plant implements Parcelable {
             return new Plant[i];
         }
     };
-
-    public static LinkedList<Plant> getAllPlants()
-        throws IOException, FileNotFoundException{
-//        ArrayList<Plant> plants = new ArrayList<>(ANIMALS.length);
-//        for (String ANIMAL : ANIMALS) {
-//            plants.add(new Plant(ANIMAL));
-//        }
-
-        LinkedList<Plant> plants = new LinkedList<Plant>();
-        FileInputStream in = new FileInputStream("ggf12 barcode.xlsx");
-        Plant p = new Plant();
-
-        XSSFWorkbook workbook = new XSSFWorkbook(in);
-        Sheet spreadsheet = workbook.getSheetAt(0);
-        Iterator<Row> rowIterator = spreadsheet.iterator();
-        Row row;
-
-        while(rowIterator.hasNext()) {
-            row = rowIterator.next();
-            Cell cell = row.getCell(0);
-            if(cell.getStringCellValue().length() > 0) {
-                p.setCommonNameString(cell.getStringCellValue());
-                plants.add(p);
-            }
-        }
-
-        return plants;
-    }
-
-    private static String[] ANIMALS = {
-            "pronghorn",
-            "bunny",
-            "dromedary",
-            "fawn",
-            "jackal",
-            "guinea pig",
-            "kitten",
-            "rabbit",
-            "ibex",
-            "meerkat",
-            "leopard",
-            "blue crab",
-            "starfish",
-            "squirrel",
-            "bison",
-            "woodchuck",
-            "ox",
-            "grizzly bear",
-            "chinchilla",
-            "mynah bird",
-            "polar bear",
-            "vicuna",
-            "mountain goat",
-            "chipmunk",
-            "buffalo",
-            "ermine",
-            "impala",
-            "skunk",
-            "goat",
-            "okapi",
-            "rooster",
-            "walrus",
-            "toad",
-            "puma",
-            "antelope",
-            "parrot",
-            "coati",
-            "opossum",
-            "parakeet",
-            "doe",
-            "ferret",
-            "musk deer",
-            "hamster",
-            "bat",
-            "basilisk",
-            "ground hog",
-            "fox",
-            "gnu",
-            "cow",
-            "marten"};
 
     public String getBotanicalNameString() {
         return botanicalNameString;

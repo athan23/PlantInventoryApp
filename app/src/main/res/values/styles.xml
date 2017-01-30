@@ -12,5 +12,5 @@
         <item name="android:textSize">24sp</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
     </style>
-    
+
 </resources>

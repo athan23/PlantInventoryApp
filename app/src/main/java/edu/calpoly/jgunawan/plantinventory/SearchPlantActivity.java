@@ -2,28 +2,36 @@ package edu.calpoly.jgunawan.plantinventory;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.io.FileNotFoundException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Iterator;
 
 import rx.subjects.PublishSubject;
 
 public class SearchPlantActivity extends AppCompatActivity {
 
-    LinkedList<Plant> mPlants;
+    ArrayList<Plant> mPlants;
 
     private static final String SAVED_LAYOUT_MANAGER = "layout-manager-state";
 
@@ -40,17 +48,17 @@ public class SearchPlantActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             try {
-                mPlants = Plant.getAllPlants();
-            } catch (IOException e) {
+                mPlants = readExcelSpreadsheet();
+            } catch (IOException | InvalidFormatException e) {
                 e.printStackTrace();
             }
         }
         else {
-            //mPlants = savedInstanceState.getParcelableArrayList("");
+            // TODO: Later implementation. This is to deal with screen orientation.
+            // mPlants = savedInstanceState.getParcelableArrayList("");
         }
 
-        ArrayList<Plant> plants = new ArrayList<>(mPlants);
-        final PlantAdapter pa = new PlantAdapter(plants);
+        final PlantAdapter pa = new PlantAdapter(mPlants);
         recyclerView.setAdapter(pa);
     }
 
@@ -72,11 +80,11 @@ public class SearchPlantActivity extends AppCompatActivity {
 
     public static class PlantAdapter extends RecyclerView.Adapter<PlantViewHolder> {
 
-        private ArrayList<Plant> mPlants;
+        private ArrayList<Plant> plants;
         private final PublishSubject<Plant> onClickSubject = PublishSubject.create();
 
         public PlantAdapter(ArrayList<Plant> plants) {
-            this.mPlants = plants;
+            this.plants = plants;
         }
 
         @Override
@@ -91,7 +99,7 @@ public class SearchPlantActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(PlantViewHolder holder, int position) {
-            final Plant p = mPlants.get(position);
+            final Plant p = plants.get(position);
             holder.bind(p);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +117,7 @@ public class SearchPlantActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mPlants.size();
+            return plants.size();
         }
     }
 
@@ -129,20 +137,36 @@ public class SearchPlantActivity extends AppCompatActivity {
         }
     }
 
-    /*
-    public void plantA(View view) {
-        Intent intent = new Intent(this, PlantInformationActivity.class);
-        startActivity(intent);
-    }
+    private ArrayList<Plant> readExcelSpreadsheet() throws IOException, InvalidFormatException {
+        ArrayList<Plant> plants = new ArrayList<Plant>();
 
-    public void plantB(View view) {
-        Intent intent = new Intent(this, PlantInformationActivity.class);
-        startActivity(intent);
-    }
+        AssetManager am = this.getAssets();
+        InputStream is = am.open("ggf12_barcode.xlsx");
 
-    public void plantC(View view) {
-        Intent intent = new Intent(this, PlantInformationActivity.class);
-        startActivity(intent);
+        Workbook workbook = WorkbookFactory.create(is);
+        Sheet spreadsheet = workbook.getSheetAt(0);
+        Iterator<Row> rowIterator = spreadsheet.iterator();
+        Row row;
+        Cell cell;
+
+        rowIterator.next();
+
+        while (rowIterator.hasNext()) {
+            row = rowIterator.next();
+            Iterator <Cell> cellIterator = row.cellIterator();
+
+            while (cellIterator.hasNext()) {
+                cell = cellIterator.next();
+                if (cell.getColumnIndex() == 1 && cell.getStringCellValue().length() > 0) {
+                    Plant p = new Plant();
+                    p.setCommonNameString(cell.getStringCellValue());
+                    plants.add(p);
+                }
+            }
+        }
+
+        workbook.close();
+
+        return plants;
     }
-    */
 }

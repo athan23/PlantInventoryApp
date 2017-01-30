@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void scanPlant(View view) {
-        Intent intent = new Intent(this, PlantInformationActivity.class);
+        Intent intent = new Intent(this, ScanActivity.class);
         startActivity(intent);
     }
 
