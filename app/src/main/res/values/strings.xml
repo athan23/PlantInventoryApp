@@ -19,6 +19,7 @@
     <string name="min_usda_zone">Min. USDA Zone</string>
     <string name="availability">Availability</string>
     <string name="saleable">Saleable</string>
+    <string name="location">Location</string>
     <string name="save">Save</string>
 
     <string name="filter_menuitem">Filter</string>

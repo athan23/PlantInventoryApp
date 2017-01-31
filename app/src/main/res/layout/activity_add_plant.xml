@@ -13,268 +13,14 @@
     android:scrollbars="none"
     tools:context="edu.calpoly.jgunawan.plantinventory.AddPlantActivity">
 
-    <!--
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.95"
-        android:id="@+id/addPlantTableLayout">
-
-        <TableRow
-            android:id="@+id/botanicalNameRow"
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/botanicalNameRowTextView"
-                android:text="@string/botanical_name"
-                android:textSize="36sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_weight="0.9"
-                android:textSize="36sp"
-                android:background="@drawable/plant_header"
-                android:id="@+id/botanicalNameRowEditText"
-                android:inputType="textMultiLine"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/commonNameRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/commonNameRowTextView"
-                android:text="@string/common_name"
-                android:textSize="36sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:textSize="36sp"
-                android:id="@+id/commonNameRowEditText"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:inputType="textMultiLine"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/sizeRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/sizeRowTextView"
-                android:text="@string/size"
-                android:textSize="36sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/sizeRowEditText"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:textSize="36sp"
-                android:inputType="number"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/detailsRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start"
-                android:id="@+id/detailsRowTextView"
-                android:text="@string/details"
-                android:textSize="36sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/detailsRowEditText"
-                android:inputType="textMultiLine|textCapSentences"
-                android:textSize="36sp"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:lines="3"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/notesRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start"
-                android:id="@+id/notesRowTextView"
-                android:text="@string/notes"
-                android:textSize="36sp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/notesRowEditText"
-                android:inputType="textMultiLine"
-                android:textSize="36sp"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:lines="2"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/typeRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/typeRowTextView"
-                android:textSize="36sp"
-                android:text="@string/type"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:textSize="36sp"
-                android:id="@+id/typeRowEditText"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:inputType="text"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/minUSDAZoneRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:textSize="36sp"
-                android:id="@+id/minUSDAZoneRowTextView"
-                android:text="@string/min_usda_zone"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/minUSDAZoneRowEditText"
-                android:textSize="36sp"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:inputType="number"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/availabilityRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/availabilityRowTextView"
-                android:textSize="36sp"
-                android:text="@string/availability"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/availabilityRowEditText"
-                android:textSize="36sp"
-                android:background="@drawable/plant_header"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:inputType="number"/>
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/saleableRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:gravity="start|center"
-                android:id="@+id/saleableRowTextView"
-                android:textSize="36sp"
-                android:text="@string/saleable"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:id="@+id/saleableRowCheckBox" />
-        </TableRow>
-
-        <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:text="@string/add_plant"
-        android:textSize="24sp"
-        android:onClick="addNewPlant"/>
-    -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/addPlantLinearLayout"
+        android:paddingStart="20dp"
         android:paddingLeft="20dp"
+        android:paddingRight="0dp"
+        android:paddingEnd="0dp"
         android:orientation="vertical">
 
         <!-- Botanical Name -->
@@ -285,9 +31,9 @@
             android:paddingBottom="20dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
+                android:layout_weight="0.1"
                 android:layout_gravity="center"
                 android:scaleType="fitStart"
                 android:src="@drawable/ic_flower"
@@ -295,9 +41,9 @@
                 android:id="@+id/addPlantNameImageView"/>
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.9"
                 android:textSize="24sp"
                 android:hint="@string/botanical_name"
                 app:met_floatingLabel="normal"
@@ -316,14 +62,14 @@
             android:paddingBottom="20dp">
 
             <Space
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
+                android:layout_weight="0.1"/>
 
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.9"
                 android:textSize="24sp"
                 android:hint="@string/common_name"
                 app:met_floatingLabel="normal"
@@ -335,25 +81,27 @@
 
         </LinearLayout>
 
-        <!-- Size -->
+        <!-- Size, Availability, and Saleable -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:paddingBottom="20dp">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
+                android:layout_weight="0.1"
                 android:layout_gravity="center"
                 android:scaleType="fitStart"
                 android:src="@drawable/ic_ruler"
                 android:contentDescription="@string/size"/>
 
+            <!-- Size -->
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.2"
                 android:textSize="24sp"
                 android:hint="@string/size"
                 app:met_floatingLabel="normal"
@@ -362,90 +110,72 @@
                 android:background="@drawable/plant_header"
                 android:id="@+id/sizeAddPlantEditText"
                 android:inputType="textCapSentences"/>
-        </LinearLayout>
 
-        <!-- Details -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
-
-            <ImageView
-                android:layout_width="match_parent"
+            <Space
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"
-                android:layout_gravity="center"
-                android:scaleType="fitStart"
-                android:src="@drawable/ic_message_reply_text"
-                android:contentDescription="@string/details"/>
+                android:layout_weight="0.05"/>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+            <!-- Availability -->
+            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.25"
                 android:textSize="24sp"
-                android:hint="@string/details"
-                app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/details"
-                app:met_floatingLabelTextSize="24sp"
-                android:background="@drawable/plant_header"
-                android:id="@+id/detailsAddPlantEditText"
-                android:inputType="textCapSentences"/>
+                android:hint="@string/availability"
+                android:id="@+id/availabilityAddPlantSpinner"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"/>
+
+            <!-- Saleable -->
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/SalebableAddPlantTextView"
+                    android:text="@string/saleable"
+                    android:textSize="24sp"
+                    android:gravity="center_vertical"
+                    android:textColor="#A9A9A9"/>
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_toRightOf="@id/SalebableAddPlantTextView"
+                    android:layout_toEndOf="@id/SalebableAddPlantTextView"
+                    android:id="@+id/saleableRowCheckBox"
+                    android:layout_gravity="bottom"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
-        <!-- Notes -->
+        <!-- Type and USDA Zone -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:paddingBottom="20dp">
 
             <Space
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
+                android:layout_weight="0.1"/>
 
+            <!-- Type -->
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textSize="24sp"
-                android:hint="@string/notes"
-                app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/notes"
-                app:met_floatingLabelTextSize="24sp"
-                android:background="@drawable/plant_header"
-                android:id="@+id/notesAddPlantEditText"
-                android:inputType="textCapSentences"/>
-
-        </LinearLayout>
-
-        <!-- Type -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
-
-            <!--
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.9"
-                android:layout_gravity="center"
-                android:scaleType="fitStart"
-                android:src="@drawable/ic_format_list_bulleted_type"
-                android:contentDescription="@string/type"/>
-            -->
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.5"
                 android:textSize="24sp"
                 android:hint="@string/type"
                 app:met_floatingLabel="normal"
@@ -455,34 +185,16 @@
                 android:id="@+id/typeAddPlantEditText"
                 android:inputType="textCapSentences"/>
 
-        </LinearLayout>
-
-        <!-- USDA Zone -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp">
-
             <Space
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
+                android:layout_weight="0.05"/>
 
-            <!--
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.9"
-                android:layout_gravity="center"
-                android:scaleType="fitStart"
-                android:src="@drawable/ic_format_list_numbered_black_24px"
-                android:contentDescription="@string/min_usda_zone"/>
-            -->
-
+            <!-- USDA Zone -->
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
+                android:layout_weight="0.35"
                 android:textSize="24sp"
                 android:hint="@string/min_usda_zone"
                 app:met_floatingLabel="normal"
@@ -494,7 +206,33 @@
 
         </LinearLayout>
 
-        <!-- Availability -->
+        <!-- Notes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"/>
+
+            <!-- Notes -->
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:textSize="24sp"
+                android:hint="@string/notes"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelText="@string/notes"
+                app:met_floatingLabelTextSize="24sp"
+                android:background="@drawable/plant_header"
+                android:id="@+id/notesAddPlantEditText"
+                android:inputType="textCapSentences|textMultiLine"/>
+
+        </LinearLayout>
+
+        <!-- Location -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -506,94 +244,82 @@
                 android:layout_weight="0.9"
                 android:layout_gravity="center"
                 android:scaleType="fitStart"
-                android:src="@drawable/ic_check_circle"
-                android:contentDescription="@string/availability"/>
+                android:src="@drawable/ic_map_marker"
+                android:contentDescription="@string/location"/>
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textSize="24sp"
-                android:hint="@string/availability"
-                android:id="@+id/availabilityAddPlantSpinner"/>
-
-            <!--
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:textSize="24sp"
-                android:hint="@string/availability"
+                android:hint="@string/location"
                 app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/availability"
+                app:met_floatingLabelText="@string/details"
                 app:met_floatingLabelTextSize="24sp"
                 android:background="@drawable/plant_header"
-                android:id="@+id/availabilityAddPlantEditText"
-                android:inputType="textCapSentences"/>
-            -->
+                android:id="@+id/locationAddPlantEditText"
+                android:inputType="textCapSentences|textMultiLine"/>
 
         </LinearLayout>
 
-        <!-- Saleable -->
+        <!-- Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_gravity="center"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_message_reply_text"
+                android:contentDescription="@string/details"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:textSize="24sp"
+                android:hint="@string/details"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelText="@string/details"
+                app:met_floatingLabelTextSize="24sp"
+                android:background="@drawable/plant_header"
+                android:id="@+id/detailsAddPlantEditText"
+                android:inputType="textCapSentences|textMultiLine"/>
+
+        </LinearLayout>
+
+        <!-- Save Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.9"
-                android:layout_gravity="center"
-                android:scaleType="fitStart"
-                android:src="@drawable/ic_attach_money_black_24px"
-                android:contentDescription="@string/saleable"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/saleable"
-                    android:textSize="24sp"
-                    android:textColor="@color/hintColor"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/saleableRowCheckBox"
-                    android:layout_gravity="bottom"/>
-
-            </LinearLayout>
-
-            <!--
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textSize="24sp"
-                android:hint="@string/saleable"
-                android:id="@+id/saleableAddPlantSpinner"/>
-            -->
-
-            <!--
             <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:textSize="24sp"
-                android:hint="@string/saleable"
-                app:met_floatingLabel="normal"
-                app:met_floatingLabelText="@string/saleable"
-                app:met_floatingLabelTextSize="24sp"
-                android:background="@drawable/plant_header"
-                android:id="@+id/saleableAddPlantEditText"
-                android:inputType="textCapSentences"/>
-            -->
+                android:layout_weight="0.25"
+                android:visibility="invisible"
+                android:clickable="false"
+                android:paddingBottom="20dp"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:id="@+id/saveButton"
+                android:text="@string/add_plant"
+                android:textSize="24sp"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:visibility="invisible"
+                android:clickable="false"
+                android:paddingBottom="20dp"/>
 
         </LinearLayout>
 

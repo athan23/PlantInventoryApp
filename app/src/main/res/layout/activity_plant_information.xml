@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/commonName"
+                android:id="@+id/botanicalName"
                 android:text="@string/botanical_name"
                 android:gravity="center"
                 android:textSize="48sp"
@@ -37,7 +37,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/botanicalName"
+                android:id="@+id/commonName"
                 android:text="@string/common_name"
                 android:gravity="center"
                 android:textSize="36sp"
